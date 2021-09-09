@@ -1,0 +1,33 @@
+{% extends 'partials/base.html' %}
+{% block title %}Customer Page{% endblock %}
+{% block content %}
+{% include 'partials/topnav.html' %}
+<div class="container">
+  <div class="row my-4">
+    <div class="col-md-4"></div>
+    <div class="col-md-12">
+        <table class="table bg-white">
+            <thead class="text-white" style="background-color: rgb(42, 110, 227)">
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">UserName</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Email ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for worker in workers %}
+                <tr>
+                    <th scope="row"><a class="btn btn-success btn-sm" href="{% url 'dashboard-customer-details' worker.pk %} ">View</a></th>
+                    <td>{{ worker.username }}</td>
+                    <td>{{ worker.profile.phone }}</td>
+                    <td>{{ worker.email }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
